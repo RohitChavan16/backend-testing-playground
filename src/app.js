@@ -1,17 +1,11 @@
 import express from "express";
-import healthRouter from "./routes/health.routes.js";
-import userRouter from "./routes/user.routes.js";
+import authRoutes from "./routes/auth.routes.js";
+import { errorHandler } from "./middleware/error.middleware.js";
 
 const app = express();
-
 app.use(express.json());
 
-
-app.use("/health", healthRouter);
-app.use("/user", userRouter);
-
-app.use("/", (req, res) => {
-   res.status(200).json({message: "Jai Shri Ram"});
-});
+app.use("/auth", authRoutes);
+app.use(errorHandler);
 
 export default app;
