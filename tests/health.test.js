@@ -1,18 +1,20 @@
-import test from "node:test";
-import assert from "node:assert";
-import request from "supertest";
-import app from "../src/app.js";
+const request = require("supertest");
+const app = require("../src/app.js");
 
-test("GET Initial server testing ", async () => {
-    const res = await request(app).get("/");
-    assert.strictEqual(res.statusCode, 200);
-    assert.strictEqual(res.body.message, "Jai Shri Ram");
+describe("Basic Server Tests", () => {
+
+  test("GET / should return Jai Shri Ram", async () => {
+    const res = await request(app).get("/health");
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body.message).toBe("JAI SHRI RAM");
+  });
+
+  test("GET /health/checkHealth returns OK", async () => {
+    const res = await request(app).get("/health/checkHealth");
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body.status).toBe("OK");
+  });
+
 });
-
-test("GET /health returns OK", async () => {
-  const res = await request(app).get("/health/checkHealth");
-
-  assert.strictEqual(res.statusCode, 200);
-  assert.strictEqual(res.body.status, "OK");
-});
-

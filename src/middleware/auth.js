@@ -1,4 +1,4 @@
-export function auth(req, res, next) {
+function auth(req, res, next) {
   const token = req.headers.authorization;
 
   if (!token) {
@@ -6,5 +6,10 @@ export function auth(req, res, next) {
   }
 
   req.user = { id: 1 };
+
   next();
 }
+
+module.exports = {
+  auth
+};

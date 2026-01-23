@@ -1,6 +1,6 @@
-import request from "supertest";
-import app from "../../src/app.js";
-import { resetDb } from "../../src/db/fakeDB.js";
+const request = require("supertest");
+const app = require("../../src/app.js");
+const { resetDb } = require("../../src/db/fakeDB.js");
 
 beforeEach(() => resetDb());
 

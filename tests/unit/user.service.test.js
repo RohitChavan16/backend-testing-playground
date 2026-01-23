@@ -1,5 +1,5 @@
-import { createUser } from "../../src/services/user.service.js";
-import { resetDb } from "../../src/db/fakeDB.js";
+const { createUser } = require("../../src/service/user.service.js");
+const { resetDb } = require("../../src/db/fakeDB.js");
 
 beforeEach(() => resetDb());
 

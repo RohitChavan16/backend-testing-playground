@@ -1,6 +1,13 @@
-import express from "express"
+const express = require("express");
 
 const healthRouter = express.Router();
+
+healthRouter.get("/", (req, res) => {
+  res.status(200).json({
+    message: "JAI SHRI RAM",
+    uptime: process.uptime(),
+  });
+});
 
 healthRouter.get("/checkHealth", (req, res) => {
   res.status(200).json({
@@ -9,4 +16,4 @@ healthRouter.get("/checkHealth", (req, res) => {
   });
 });
 
-export default healthRouter;
+module.exports = healthRouter;

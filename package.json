@@ -2,11 +2,11 @@
   "name": "backend-testing-lab",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node server.js",
     "test": "jest"
   },
-  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",

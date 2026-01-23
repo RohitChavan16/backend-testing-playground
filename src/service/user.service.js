@@ -1,6 +1,6 @@
-import { users } from "../db/fakeDB.js";
+const { users } = require("../db/fakeDB.js");
 
-export function createUser({ email, password }) {
+function createUser({ email, password }) {
   if (!email || !password) {
     throw new Error("VALIDATION_ERROR");
   }
@@ -9,11 +9,22 @@ export function createUser({ email, password }) {
     throw new Error("DUPLICATE_USER");
   }
 
-  const user = { id: users.length + 1, email, password };
+  const user = {
+    id: users.length + 1,
+    email,
+    password
+  };
+
   users.push(user);
+
   return user;
 }
 
-export function findUser(email) {
+function findUser(email) {
   return users.find(u => u.email === email);
 }
+
+module.exports = {
+  createUser,
+  findUser
+};

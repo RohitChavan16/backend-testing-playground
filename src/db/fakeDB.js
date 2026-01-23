@@ -1,5 +1,10 @@
-export const users = [];
+const users = [];
 
-export function resetDb() {
+function resetDb() {
   users.length = 0;
 }
+
+module.exports = {
+  users,
+  resetDb
+};
